@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { Menu } from './menu/Menu';
-import * as serviceWorker from './serviceWorker';
 import { Course } from './course/Course';
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Course />, document.getElementById('root'));
 

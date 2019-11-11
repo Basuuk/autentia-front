@@ -30,7 +30,7 @@ export class Tabla extends React.Component<CustomProps> {
                             <TableRow key={course.id}>
                                 <TableCell component="th" scope="course">{course.titulo}</TableCell>
                                 <TableCell align="right">{course.horas}</TableCell>
-                                <TableCell align="right">{this.props.teachers.find(teacher => teacher.id == course.id_profesor).name}</TableCell>
+                                <TableCell align="right">{this.props.teachers.find(teacher => teacher.id === course.id_profesor).name}</TableCell>
                                 <TableCell align="right">{course.nivel}</TableCell>
                             </TableRow>
                         ))}
@@ -38,9 +38,5 @@ export class Tabla extends React.Component<CustomProps> {
                 </Table>
             </Paper>
         );
-    }
-
-    pinta = () => {
-        console.log(this.props);
     }
 }

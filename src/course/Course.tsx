@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tabla } from '../table/Table';
+import { AddCourse } from './AddCourse';
 
 interface IState {
     error: any,
@@ -34,8 +35,11 @@ export class Course extends React.Component<IProps, IState> {
             return <div>Loading...</div>;
         } else {
             return (
-                <Tabla courses={courses} teachers={teachers}/>
-            )
+                <div>
+                    <Tabla courses={courses} teachers={teachers}/>
+                    <AddCourse teachers={teachers} fetchCourses={this.fetchCourses} />
+                </div>
+            );
         }
     }
 
@@ -60,7 +64,7 @@ export class Course extends React.Component<IProps, IState> {
             });
     }
 
-    private fetchCourses() {
+    private fetchCourses = () => {
         fetch("http://localhost:8080/autentia/course?offset=0&limit=10")
             .then(res => res.json())
             .then((result) => {
