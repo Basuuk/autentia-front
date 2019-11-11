@@ -7,34 +7,30 @@ import TableRow from '@material-ui/core/TableRow';
 import * as React from 'react';
 
 interface CustomProps {
-    data: any;
-    // root: any;
-    // table: any;
+    courses: any;
+    teachers: any;
 }
 
 export class Tabla extends React.Component<CustomProps> {
 
     render() {
-        // const classes = useStyles();
         return (
             <Paper>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                            <TableCell>Título</TableCell>
+                            <TableCell align="right">Horas</TableCell>
+                            <TableCell align="right">Profesor</TableCell>
+                            <TableCell align="right">Nivel</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.data.map((course: any) => (
+                        {this.props.courses.map((course: any) => (
                             <TableRow key={course.id}>
                                 <TableCell component="th" scope="course">{course.titulo}</TableCell>
                                 <TableCell align="right">{course.horas}</TableCell>
-                                {/* <TableCell align="right">{course.estado}</TableCell> */}
-                                <TableCell align="right">{course.id_profesor}</TableCell>
+                                <TableCell align="right">{this.props.teachers.find(teacher => teacher.id == course.id_profesor).name}</TableCell>
                                 <TableCell align="right">{course.nivel}</TableCell>
                             </TableRow>
                         ))}
