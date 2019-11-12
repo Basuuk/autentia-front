@@ -1,9 +1,10 @@
-import { Button, FormControl, Input, InputLabel, MenuItem, Paper, Select } from '@material-ui/core';
+import { Button, FormControl, Input, InputLabel, MenuItem, Paper, Select, Typography } from '@material-ui/core';
 import * as React from 'react';
 
 interface IProps {
     teachers: any[],
-    fetchCourses: any
+    fetchCourses: any,
+    hideAddCourse: any
 }
 
 interface IState {
@@ -29,8 +30,10 @@ export class AddCourse extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <Paper className="m-left">
-                <h1>Añadir curso</h1>
+            <Paper className="addCourse">
+                <Typography variant="h5" gutterBottom>
+                    Añadir curso
+                </Typography>
                 <div>
                     <FormControl >
                         <InputLabel id="active-label">Activo</InputLabel>
@@ -95,7 +98,12 @@ export class AddCourse extends React.Component<IProps, IState> {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(this.mapStateToBack())
-        }).then(r => this.props.fetchCourses()).then(() => this.clearForm())
+        })
+            .then(r => this.props.fetchCourses())
+            .then(() => {
+                this.clearForm();
+                this.props.hideAddCourse();
+            })
     }
 
     mapStateToBack() {
@@ -107,7 +115,7 @@ export class AddCourse extends React.Component<IProps, IState> {
             id_profesor: this.state.teacher
         }
     }
-    
+
     clearForm() {
         let initialState: any = {
             title: "",

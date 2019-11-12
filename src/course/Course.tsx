@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Tabla } from '../table/Table';
 import { AddCourse } from './AddCourse';
+import { Button, Typography } from '@material-ui/core';
 
 interface IState {
     error: any,
     coursesLoaded: boolean,
     teachersLoaded: boolean,
     courses: any[],
-    teachers: any[]
+    teachers: any[],
+    hideAddCourse: boolean
 }
 
 interface IProps {
@@ -23,7 +25,8 @@ export class Course extends React.Component<IProps, IState> {
             coursesLoaded: false,
             teachersLoaded: false,
             courses: [],
-            teachers: []
+            teachers: [],
+            hideAddCourse: true
         };
     }
 
@@ -36,11 +39,25 @@ export class Course extends React.Component<IProps, IState> {
         } else {
             return (
                 <div>
-                    <Tabla courses={courses} teachers={teachers}/>
-                    <AddCourse teachers={teachers} fetchCourses={this.fetchCourses} />
+                    <Typography variant="h4" gutterBottom>
+                        Catálogo de cursos
+                    </Typography>
+                    <Tabla courses={courses} teachers={teachers} />
+                    <Button variant="contained" color="primary" onClick={this.showAddCourse}>
+                        Añadir curso
+                    </Button>
+                    {this.state.hideAddCourse ? null : <AddCourse teachers={teachers} fetchCourses={this.fetchCourses} hideAddCourse={this.hideAddCourse} />}
                 </div>
             );
         }
+    }
+
+    showAddCourse = () => {
+        this.setState({ hideAddCourse: false });
+    }
+
+    hideAddCourse = () => {
+        this.setState({ hideAddCourse: true });
     }
 
     componentDidMount() {
