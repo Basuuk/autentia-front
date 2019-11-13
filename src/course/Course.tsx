@@ -1,7 +1,7 @@
+import { Button, Typography } from '@material-ui/core';
 import * as React from 'react';
 import { Tabla } from '../table/Table';
 import { AddCourse } from './AddCourse';
-import { Button, Typography } from '@material-ui/core';
 
 interface IState {
     error: any,
@@ -43,9 +43,11 @@ export class Course extends React.Component<IProps, IState> {
                         Catálogo de cursos
                     </Typography>
                     <Tabla courses={courses} teachers={teachers} />
-                    <Button variant="contained" color="primary" onClick={this.showAddCourse}>
-                        Añadir curso
-                    </Button>
+                    <div className="addButton">
+                        <Button variant="contained" color="primary" onClick={this.showAddCourse}>
+                            Añadir curso
+                        </Button>
+                    </div>
                     {this.state.hideAddCourse ? null : <AddCourse teachers={teachers} fetchCourses={this.fetchCourses} hideAddCourse={this.hideAddCourse} />}
                 </div>
             );

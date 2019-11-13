@@ -59,13 +59,13 @@ export class AddCourse extends React.Component<IProps, IState> {
                 </div>
                 <div>
                     <FormControl >
-                        <InputLabel id="demo-simple-select-label">Título</InputLabel>
+                        <InputLabel>Título</InputLabel>
                         <Input value={this.state.title} className="formControl" onChange={this.handleTitleChange} />
                     </FormControl>
                 </div>
                 <div>
                     <FormControl >
-                        <InputLabel id="demo-simple-select-label">Nivel</InputLabel>
+                        <InputLabel>Nivel</InputLabel>
                         <Select className="formControl"
                             labelId="level-label" value={this.state.level}
                             id="level" onChange={this.handleLevelChange}>

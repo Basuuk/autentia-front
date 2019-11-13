@@ -19,10 +19,10 @@ export class Tabla extends React.Component<CustomProps> {
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Título</TableCell>
-                            <TableCell align="right">Horas</TableCell>
-                            <TableCell align="right">Profesor</TableCell>
-                            <TableCell align="right">Nivel</TableCell>
+                            <TableCell><b>Título</b></TableCell>
+                            <TableCell align="right"><b>Horas</b></TableCell>
+                            <TableCell align="right"><b>Profesor</b></TableCell>
+                            <TableCell align="right"><b>Nivel</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
