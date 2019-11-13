@@ -81,11 +81,14 @@ export class AddCourse extends React.Component<IProps, IState> {
                         <Input value={this.state.hours} type="number" className="formControl" onChange={this.handleHourChange} />
                     </FormControl>
                 </div>
-                <br></br>
-                <hr></hr>
-                <Button variant="contained" onClick={this.addCourse} color="primary">
-                    Añadir
-                </Button>
+                <div className="actionButtons">
+                    <Button variant="contained" onClick={this.cancel} color="primary">
+                        Cancelar
+                    </Button>
+                    <Button variant="contained" onClick={this.addCourse} color="primary">
+                        Añadir
+                    </Button>
+                </div>
             </Paper>
         );
     }
@@ -104,6 +107,11 @@ export class AddCourse extends React.Component<IProps, IState> {
                 this.clearForm();
                 this.props.hideAddCourse();
             })
+    }
+
+    cancel = () => {
+        this.clearForm();
+        this.props.hideAddCourse();
     }
 
     mapStateToBack() {
